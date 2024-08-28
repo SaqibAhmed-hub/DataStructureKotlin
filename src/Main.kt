@@ -1,7 +1,7 @@
-import recursion.RecursionClass
+import arrays.BasicArrays
+
 
 fun main() {
-
-    val basicRecursion = RecursionClass()
-    println(basicRecursion.factorialNumber(7))
+    val basicArray = BasicArrays()
+    basicArray.printArray()
 }
