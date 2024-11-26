@@ -225,5 +225,19 @@ class BasicArrays {
         }
     }
 
+    /**
+     * Find the max of an Array
+     */
+    fun findMax(arr: Array<Int>): Int? {
+        return arr.maxOrNull()
+    }
 
+
+    /**
+     * find the second-Largest Array
+     */
+    fun secondLargest(arr: Array<Int>): Int? {
+        val sortedArr = arr.distinct().sorted()
+        return if (sortedArr.size > 1) sortedArr[sortedArr.size - 2] else null
+    }
 }
