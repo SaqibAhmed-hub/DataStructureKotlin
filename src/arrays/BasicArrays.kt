@@ -64,6 +64,19 @@ class BasicArrays {
     }
 
     /**
+     * Array in-Built function that are useful
+     * @param =  arrayOf(1, 2, 3, 4, 5)
+     */
+    fun printAllInbuiltFunction(arr: Array<Int>){
+        println(arr.size)  // 5
+        println(arr[3])   // 4
+        println(arr.take(3)) // [1, 2, 3]
+        println(arr.drop(3)) // [4, 5]
+        println(arr.sum())  //15
+        println(arr.plus(15))
+      }
+
+    /**
      * find the last second digit in an array
      */
     fun findLastSecondDigit(arr: IntArray): Int{
