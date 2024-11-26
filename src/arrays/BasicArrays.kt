@@ -240,4 +240,27 @@ class BasicArrays {
         val sortedArr = arr.distinct().sorted()
         return if (sortedArr.size > 1) sortedArr[sortedArr.size - 2] else null
     }
+    /**
+     * Find the missing number
+     */
+    fun findMissingNumber(arr: Array<Int>, n: Int): Int {
+        val totalSum = (n * (n + 1)) / 2
+        val arrSum = arr.sum()
+        return totalSum - arrSum
+    }
+
+
+    /**
+     * find the commonElement in an array
+     */
+    fun findCommonElements(arr1: Array<Int>, arr2: Array<Int>): Array<Int> {
+        return arr1.intersect(arr2.toSet()).toTypedArray()
+    }
+
+    /**
+     * remove the duplicate value in an array
+     */
+    fun removeDuplicates(numbers: Array<Int>): List<Int> {
+        return numbers.distinct()
+    }
 }
