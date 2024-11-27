@@ -51,3 +51,40 @@ fun minimumBribes(q: Array<Int>): Unit {
 
     println(totalBribes)
 }
+
+/**
+ * val arr = arrayOf(7, 1, 3, 2, 4, 5, 6)
+ * @sample - 5
+ * time Complexity - O(n log n)
+ */
+fun minimumSwaps(arr: Array<Int>): Int {
+    val n = arr.size
+    val visited = BooleanArray(n) { false }
+    var swapCount = 0
+
+    // Create an array of pairs (value, index)
+    val indexedArray = arr.withIndex().sortedBy { it.value }
+
+    for (i in 0..<n) {
+        // If element is already visited or in the correct position, skip
+        if (visited[i] || indexedArray[i].index == i) continue
+
+        var cycleSize = 0
+        var j = i
+
+        // Traverse the cycle
+        while (!visited[j]) {
+            visited[j] = true
+            j = indexedArray[j].index
+            cycleSize++
+        }
+
+        // If there is a cycle of size > 1, we need (cycleSize - 1) swaps
+        if (cycleSize > 1) {
+            swapCount += cycleSize - 1
+        }
+    }
+
+    return swapCount
+
+}

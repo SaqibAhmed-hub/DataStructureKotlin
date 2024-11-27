@@ -74,6 +74,9 @@ class BasicArrays {
         println(arr.drop(3)) // [4, 5]
         println(arr.sum())  //15
         println(arr.plus(15))
+        println(arr.sortedArray().asList()) // [1, 2, 3, 4, 5]
+        println(arr.reversed()) // [5, 4, 3, 2, 1]
+        println(arr.groupBy { 1 }) // {1=[1, 2, 3, 4, 5]}
       }
 
     /**
