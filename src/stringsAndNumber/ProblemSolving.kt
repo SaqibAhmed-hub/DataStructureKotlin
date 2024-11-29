@@ -78,3 +78,46 @@ fun isValid(s: String): String {
 
     return "NO"
 }
+
+
+/**
+ * Special Sub String
+ *     val s1 = "aaaa" // Expected: 10
+ *     val s2 = "abcbaba" // Expected: 10
+ *     val s3 = "aabaa" // Expected: 9
+ *     Time Complexity - O(n2)
+ */
+fun substrCount(n: Int, s: String): Long {
+    var count: Long = 0
+
+    // Count all substrings where all characters are the same
+    var i = 0
+    while (i < n) {
+        val char = s[i]
+        var repeatCount = 0
+
+        while (i < n && s[i] == char) {
+            i++
+            repeatCount++
+        }
+
+        // Add the count of substrings formed by repeated characters
+        count += (repeatCount.toLong() * (repeatCount + 1)) / 2
+    }
+
+    // Check for special palindromic substrings with different middle character
+    for (j in 1..<n) {
+        var offset = 1
+
+        while (
+            j - offset >= 0 && j + offset < n &&
+            s[j - offset] == s[j - 1] && s[j + offset] == s[j - 1] &&
+            s[j] != s[j - 1]
+        ) {
+            count++
+            offset++
+        }
+    }
+
+    return count
+}

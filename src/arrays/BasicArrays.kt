@@ -5,6 +5,12 @@ import kotlin.math.abs
 class BasicArrays {
 
     /**
+     * How to Read the Array in Kotlin
+     */
+
+    val inputArray = readln().trimEnd().split(" ").map{ it.toInt() }.toTypedArray()
+
+    /**
      * To initialize the array in Kotlin - 1D.
      */
     private val array1 = arrayOf(1, 2, 3, 4, 5) // Array<Int>

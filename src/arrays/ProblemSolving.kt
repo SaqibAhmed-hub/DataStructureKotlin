@@ -88,3 +88,17 @@ fun minimumSwaps(arr: Array<Int>): Int {
     return swapCount
 
 }
+
+/**
+ * Two Sum Product
+ */
+fun twoSumProduct(arr : Array<Int>,k :Int): Array<Int>{
+    for (i in arr.indices){
+        for(j in i+1..<arr.size){
+            if((arr[i] + arr[j]) == k){
+                return arrayOf(i,j)
+            }
+        }
+    }
+    return arrayOf()
+}
