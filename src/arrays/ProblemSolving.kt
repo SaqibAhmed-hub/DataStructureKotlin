@@ -102,3 +102,61 @@ fun twoSumProduct(arr : Array<Int>,k :Int): Array<Int>{
     }
     return arrayOf()
 }
+
+/**
+ * Activity Notification problems
+ * arrayOf(2, 3, 4, 2, 3, 6, 8, 4, 5)  d = 5 // Expected : 2
+ * Time Complexity - O(n)
+ */
+fun activityNotifications(expenditure: Array<Int>, d: Int): Int {
+    if (expenditure.size <= d) return 0
+
+    val count = IntArray(201)
+    var notifications = 0
+
+    for (i in 0..<d) {
+        count[expenditure[i]]++
+    }
+
+    for (i in d..<expenditure.size) {
+        val median = getMedian(count, d)
+
+        if (expenditure[i] >= 2 * median) {
+            notifications++
+        }
+
+        count[expenditure[i]]++
+        count[expenditure[i - d]]--
+    }
+
+    return notifications
+
+}
+
+fun getMedian(count: IntArray, d: Int): Double {
+    var sum = 0
+    var median1 = -1
+    var median2 = -1
+
+    for (i in count.indices) {
+        sum += count[i]
+
+        // First median value (for odd and even cases)
+        if (median1 == -1 && sum >= (d / 2) + 1) {
+            median1 = i
+        }
+
+        // Second median value (for even case only)
+        if (median2 == -1 && sum >= (d / 2) + (d % 2)) {
+            median2 = i
+        }
+
+        if (median1 != -1 && median2 != -1) {
+            break
+        }
+    }
+
+    return if (d % 2 == 0) (median1 + median2) / 2.0 else median2.toDouble()
+}
+
+
