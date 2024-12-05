@@ -5,6 +5,12 @@ import kotlin.math.abs
 class BasicArrays {
 
     /**
+     * How to Read the Array in Kotlin
+     */
+
+    val inputArray = readln().trimEnd().split(" ").map{ it.toInt() }.toTypedArray()
+
+    /**
      * To initialize the array in Kotlin - 1D.
      */
     private val array1 = arrayOf(1, 2, 3, 4, 5) // Array<Int>
@@ -62,6 +68,22 @@ class BasicArrays {
         }
         print(number)
     }
+
+    /**
+     * Array in-Built function that are useful
+     * @param =  arrayOf(1, 2, 3, 4, 5)
+     */
+    fun printAllInbuiltFunction(arr: Array<Int>){
+        println(arr.size)  // 5
+        println(arr[3])   // 4
+        println(arr.take(3)) // [1, 2, 3]
+        println(arr.drop(3)) // [4, 5]
+        println(arr.sum())  //15
+        println(arr.plus(15))
+        println(arr.sortedArray().asList()) // [1, 2, 3, 4, 5]
+        println(arr.reversed()) // [5, 4, 3, 2, 1]
+        println(arr.groupBy { 1 }) // {1=[1, 2, 3, 4, 5]}
+      }
 
     /**
      * find the last second digit in an array
