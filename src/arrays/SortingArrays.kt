@@ -55,16 +55,52 @@ class SortingArrays {
 
     /**
      * Merge Sort -
+     * Time Complexity - O (n log n)
+     * more Stability, used for large Set
      */
-    fun mergeSort(arr: Array<Int>) {
+    fun mergeSort(arr: Array<Int>): Array<Int> {
+        if (arr.size <= 1 ) return arr
+        val mid = arr.size /2
+        val left = mergeSort(arr.sliceArray(0..<mid))
+        val right = mergeSort(arr.sliceArray(mid..<arr.size))
+        return merge(left,right)
+    }
 
-
+    private fun merge(left: Array<Int>, right: Array<Int>): Array<Int>{
+        var i = 0
+        var j = 0
+        val result = mutableListOf<Int>()
+        while (i < left.size && j < right.size){
+            if (left[i] <= right[j]){
+                result.add(left[i])
+                i++
+            }else{
+                result.add(right[j])
+                j++
+            }
+        }
+        result.addAll(left.slice(i..<left.size))
+        result.addAll(right.slice(j..<right.size))
+        return result.toTypedArray()
     }
 
     /**
      * Quick Sort -
+     * Time Complexity - O(n log n)
+     * Worst case: O(n²)
+     * quick and fast Sorting, less Stability
      */
-    fun quickSort(arr: Array<Int>): Unit {}
+    fun quickSort(arr: Array<Int>): Array<Int> {
+        if (arr.size <= 1) return arr
+
+        val pivot = arr[arr.size / 2]
+        val equal = arr.filter { it == pivot } // filter will return List of Item if condition match
+        val less = arr.filter { it < pivot }
+        val greater = arr.filter { it > pivot }
+
+        return quickSort(less.toTypedArray()) + equal +
+                quickSort(greater.toTypedArray())
+    }
 
     /**
      * Extension function to swap an array
