@@ -159,4 +159,35 @@ fun getMedian(count: IntArray, d: Int): Double {
     return if (d % 2 == 0) (median1 + median2) / 2.0 else median2.toDouble()
 }
 
+/**
+ * Time Complexity : O(n+ m)
+ */
+fun arrayManipulation(n: Int, queries: Array<Array<Int>>): Long {
+    // Create an array of size n+1 (1-based indexing)
+    val arr = LongArray(n + 1) { 0L }
+
+    // Apply the operations using prefix sum approach
+    for (query in queries) {
+        val start = query[0]
+        val end = query[1]
+        val value = query[2].toLong()
+
+        arr[start] += value
+        if (end + 1 <= n) {
+            arr[end + 1] -= value
+        }
+    }
+
+    // Compute prefix sum and find the maximum value
+    var max = 0L
+    var currentSum = 0L
+    for (i in 1..n) {
+        currentSum += arr[i]
+        max = maxOf(max, currentSum)
+    }
+
+    return max
+
+}
+
 
